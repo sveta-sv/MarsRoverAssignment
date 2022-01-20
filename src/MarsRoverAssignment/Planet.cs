@@ -2,16 +2,18 @@
 {
     public class Planet
     {
-        private bool[,] surface;
+        private const int Obstacle = 1;
 
-        public Planet(bool[,] surface)
+        private int[,] surface;
+
+        public Planet(int[,] surface)
         {
             this.surface = surface;
         }
 
         public bool HasObstacle(int x, int y)
         {
-            return surface[x, y];
+            return surface[x, y] == Obstacle;
         }
 
         public int Height

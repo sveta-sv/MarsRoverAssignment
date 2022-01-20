@@ -1,8 +1,8 @@
 ﻿namespace MarsRoverAssignment
 {
-    public enum Direction { North, South, East, West }
+    public enum Direction { N, S, E, W }
 
-    public enum Command { Forward, Backward, Left, Right }
+    public enum Command { F, B, L, R }
 
     public class Rover
     {
@@ -29,12 +29,12 @@
         {
             foreach (var command in commands)
             {
-                if (command == Command.Left || command == Command.Right)
+                if (command == Command.L || command == Command.R)
                 {
                     Turn(command);
                 }
 
-                if (command == Command.Forward || command == Command.Backward)
+                if (command == Command.F || command == Command.B)
                 {
                     if (!Move(command))
                     {
@@ -50,24 +50,24 @@
         {
             switch (direction)
             {
-                case Direction.North:
-                    if (command == Command.Left) { direction = Direction.West; }
-                    if (command == Command.Right) { direction = Direction.East; }
+                case Direction.N:
+                    if (command == Command.L) { direction = Direction.W; }
+                    if (command == Command.R) { direction = Direction.E; }
                     break;
 
-                case Direction.South:
-                    if (command == Command.Left) { direction = Direction.East; }
-                    if (command == Command.Right) { direction = Direction.West; }
+                case Direction.S:
+                    if (command == Command.L) { direction = Direction.E; }
+                    if (command == Command.R) { direction = Direction.W; }
                     break;
 
-                case Direction.East:
-                    if (command == Command.Left) { direction = Direction.North; }
-                    if (command == Command.Right) { direction = Direction.South; }
+                case Direction.E:
+                    if (command == Command.L) { direction = Direction.N; }
+                    if (command == Command.R) { direction = Direction.S; }
                     break;
 
-                case Direction.West:
-                    if (command == Command.Left) { direction = Direction.South; }
-                    if (command == Command.Right) { direction = Direction.North; }
+                case Direction.W:
+                    if (command == Command.L) { direction = Direction.S; }
+                    if (command == Command.R) { direction = Direction.N; }
                     break;
             }
         }
@@ -79,24 +79,24 @@
 
             switch (direction)
             {
-                case Direction.North:
-                    if (command == Command.Forward) { newX = x; newY = y - 1; }
-                    if (command == Command.Backward) { newX = x; newY = y + 1; }
+                case Direction.N:
+                    if (command == Command.F) { newX = x; newY = y - 1; }
+                    if (command == Command.B) { newX = x; newY = y + 1; }
                     break;
 
-                case Direction.South:
-                    if (command == Command.Forward) { newX = x; newY = y + 1; }
-                    if (command == Command.Backward) { newX = x; newY = y - 1; }
+                case Direction.S:
+                    if (command == Command.F) { newX = x; newY = y + 1; }
+                    if (command == Command.B) { newX = x; newY = y - 1; }
                     break;
 
-                case Direction.East:
-                    if (command == Command.Forward) { newX = x + 1; newY = y; }
-                    if (command == Command.Backward) { newX = x - 1; newY = y; }
+                case Direction.E:
+                    if (command == Command.F) { newX = x + 1; newY = y; }
+                    if (command == Command.B) { newX = x - 1; newY = y; }
                     break;
 
-                case Direction.West:
-                    if (command == Command.Forward) { newX = x - 1; newY = y; }
-                    if (command == Command.Backward) { newX = x + 1; newY = y; }
+                case Direction.W:
+                    if (command == Command.F) { newX = x - 1; newY = y; }
+                    if (command == Command.B) { newX = x + 1; newY = y; }
                     break;
             }
 
