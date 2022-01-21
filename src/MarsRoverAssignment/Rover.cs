@@ -80,13 +80,13 @@
             switch (direction)
             {
                 case Direction.N:
-                    if (command == Command.F) { newX = x; newY = y - 1; }
-                    if (command == Command.B) { newX = x; newY = y + 1; }
+                    if (command == Command.F) { newX = x; newY = y + 1; }
+                    if (command == Command.B) { newX = x; newY = y - 1; }
                     break;
 
                 case Direction.S:
-                    if (command == Command.F) { newX = x; newY = y + 1; }
-                    if (command == Command.B) { newX = x; newY = y - 1; }
+                    if (command == Command.F) { newX = x; newY = y - 1; }
+                    if (command == Command.B) { newX = x; newY = y + 1; }
                     break;
 
                 case Direction.E:
@@ -100,6 +100,9 @@
                     break;
             }
 
+            newX = Wrap(newX, planet.Width);
+            newY = Wrap(newY, planet.Height);
+
             if (!planet.HasObstacle(newX, newY))
             {
                 x = newX;
@@ -111,6 +114,11 @@
             {
                 return false;
             }
+        }
+
+        private int Wrap(int coordinate, int length)
+        {
+            return (coordinate + length) % length;
         }
     }
 }

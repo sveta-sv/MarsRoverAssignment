@@ -14,6 +14,12 @@ namespace MarsRoverAssignment.Controllers
             this.rover = rover;
         }
 
+        [HttpGet]
+        public string Index()
+        {
+            return "Hello from Mars!";
+        }
+
         [HttpPost]
         public ExecuteResponseModel Execute(ExecuteRequestModel request)
         {
